@@ -27,13 +27,18 @@ two.wheel <- subset(vehicles, drive == "2-Wheel Drive" & cty > 20)
 View(two.wheel)
 
 # Of those vehicles, what is the vehicle ID of the vehicle with the worst hwy mpg?
-worst.hwy <- 
+worst.hwy <- two.wheel$id[two.wheel$hwy == min(two.wheel$hwy)]
 
 
 # Write a function that takes a `year` and a `make` as parameters, and returns 
 # The vehicle that gets the most hwy miles/gallon of vehicles of that make in that year
-
+most.hwy<- function(make, year) {
+  filtered <- vehicles[vehicles$make == make & vehicles$year == year,]
+  return(filtered[filtered$hwy == max(filtered$hwy),])
+}
 
 # What was the most efficient honda model of 1995?
 
+most.hwy("Honda",1995)
+#Honda Civic HB VX
 
